@@ -1,11 +1,11 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl):	Klon s³ynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
-Version:	0.55
+Version:	0.56
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://gnurobbo.sourceforge.net/%{name}-%{version}.tar.gz
+Source0:	http://telia.dl.sourceforge.net/sourceforge/gnurobbo/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://gnurobbo.sf.net/
@@ -16,7 +16,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-GNU Robbo is very adjective logic game. You must help
+GNU Robbo is very addictive logic game. You must help
 little robot to get out of unfriendly planet, collecting
 parts of emergency capsule.
 
@@ -29,9 +29,15 @@ kapsu³y ratunkowej.
 %setup -q
 
 # workaround for bad timestamps on files in source tarball
-find . -type f | xargs touch
+#find . -type f | xargs touch
 
 %build
+rm -f missing
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+cp config.h{,.in}
+%{__automake}
 %configure \
 	CPPFLAGS="-I/usr/X11R6/include" \
 	LDFLAGS="%{rpmldflags} -L/usr/X11R6/lib"
