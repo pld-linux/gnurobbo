@@ -2,13 +2,14 @@ Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl):	Klon s³ynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
 Version:	0.57
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}.tar.bz2
 # Source0-md5:	575547d729528a13a0a56281311cc52e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		%{name}-stdlib.patch
 URL:		http://gnurobbo.sf.net/
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
@@ -30,6 +31,7 @@ kapsu³y ratunkowej.
 #%setup -q
 # blegh, tarball contains icons in /... don't mess in %_builddir
 %setup -q -c
+%patch0 -p 1
 
 # workaround for bad timestamps on files in source tarball
 #find . -type f | xargs touch
