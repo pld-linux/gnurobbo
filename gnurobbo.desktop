@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GNU Robbo
+Comment=A clone of 8-bit Atari game Robbo
+Comment[pl]=Klon gry Robbo z 8-bitowych atari
+Exec=gnurobbo
+Terminal=0
+Type=Application
+# vi: encoding=utf-8
