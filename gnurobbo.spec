@@ -7,8 +7,7 @@ License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://gnurobbo.sourceforge.net/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
-URL:		http://xpired.temnet.org/
-BuildRequires:	SDL-devel
+URL:		http://gnurobbo.sf.net/
 BuildRequires:	SDL_ttf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -17,6 +16,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Help the robot called Robbo find all screws he needs :-)
+
+%description -l pl
+Pomó¿ robotowi nazwanemu Robbo znale¶æ wszystkie potrzebne mu ¶rubki.
 
 %prep
 %setup -q
