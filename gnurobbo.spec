@@ -1,11 +1,11 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl):	Klon s³ynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
-Version:	0.56
+Version:	0.57
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://telia.dl.sourceforge.net/sourceforge/gnurobbo/%{name}-%{version}.tar.gz
+Source0:	http://telia.dl.sourceforge.net/sourceforge/gnurobbo/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://gnurobbo.sf.net/
