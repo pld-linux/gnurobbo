@@ -1,12 +1,13 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl):	Klon s³ynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
-Version:	0.54
+Version:	0.55
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://gnurobbo.sourceforge.net/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
+Source2:	%{name}.png
 URL:		http://gnurobbo.sf.net/
 BuildRequires:	SDL_ttf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -15,10 +16,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-Help the robot called Robbo find all screws he needs :-)
+GNU Robbo is very adjective logic game. You must help
+little robot to get out of unfriendly planet, collecting
+parts of emergency capsule.
 
 %description -l pl
-Pomó¿ robotowi zwanemu Robbo znale¼æ wszystkie potrzebne mu ¶rubki.
+GNU Robbo jest bardzo uzale¿niaj±c± gr± logiczn±. Nale¿y pomóc
+ma³emu robotowi uciec z nieprzyjaznych planet zbieraj±c czê¶ci
+kapsu³y ratunkowej.
 
 %prep
 %setup -q
@@ -35,8 +40,12 @@ find . -type f | xargs touch
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games,%{_pixmapsdir}}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Games
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -46,3 +55,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS Bugs ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_applnkdir}/Games/*
+%{_pixmapsdir}/*
