@@ -5,14 +5,16 @@ Version:	0.57
 Release:	2
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}.tar.bz2
 # Source0-md5:	575547d729528a13a0a56281311cc52e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://gnurobbo.sf.net/
 BuildRequires:	SDL_ttf-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 GNU Robbo is very addictive logic game. You must help
@@ -51,7 +53,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games,%{_pixmapsdir}}
 
 cd %{name}-%{version}
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Games
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
