@@ -26,12 +26,15 @@ ma³emu robotowi uciec z nieprzyjaznych planet zbieraj±c czê¶ci
 kapsu³y ratunkowej.
 
 %prep
-%setup -q
+#%setup -q
+# blegh, tarball contains icons in /... don't mess in %_builddir
+%setup -q -c
 
 # workaround for bad timestamps on files in source tarball
 #find . -type f | xargs touch
 
 %build
+cd %{name}-%{version}
 rm -f missing
 %{__libtoolize}
 %{__aclocal}
@@ -48,6 +51,7 @@ cp config.h{,.in}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games,%{_pixmapsdir}}
 
+cd %{name}-%{version}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Games
@@ -58,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS Bugs ChangeLog README TODO
+%doc %{name}-%{version}/{AUTHORS,Bugs,ChangeLog,README,TODO}
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_applnkdir}/Games/*
