@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Help the robot called Robbo find all screws he needs :-)
 
 %description -l pl
-Pomó¿ robotowi nazwanemu Robbo znale¶æ wszystkie potrzebne mu ¶rubki.
+Pomó¿ robotowi zwanemu Robbo znale¼æ wszystkie potrzebne mu ¶rubki.
 
 %prep
 %setup -q
