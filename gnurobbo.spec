@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://telia.dl.sourceforge.net/sourceforge/gnurobbo/%{name}-%{version}.tar.bz2
+# Source0-md5:	575547d729528a13a0a56281311cc52e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://gnurobbo.sf.net/
