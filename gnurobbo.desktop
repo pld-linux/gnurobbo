@@ -7,4 +7,5 @@ Exec=gnurobbo
 Terminal=false
 Type=Application
 Icon=gnurobbo.png
+Categories=Game;ArcadeGame;
 # vi: encoding=utf-8
