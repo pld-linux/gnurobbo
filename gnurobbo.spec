@@ -10,7 +10,7 @@ Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-stdlib.patch
-URL:		http://gnurobbo.sf.net/
+URL:		http://gnurobbo.sourceforge.net/
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -18,14 +18,13 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-GNU Robbo is very addictive logic game. You must help
-little robot to get out of unfriendly planet, collecting
-parts of emergency capsule.
+GNU Robbo is very addictive logic game. You must help little robot to
+get out of unfriendly planet, collecting parts of emergency capsule.
 
 %description -l pl
-GNU Robbo jest bardzo uzale¿niaj±c± gr± logiczn±. Nale¿y pomóc
-ma³emu robotowi uciec z nieprzyjaznych planet zbieraj±c czê¶ci
-kapsu³y ratunkowej.
+GNU Robbo jest bardzo uzale¿niaj±c± gr± logiczn±. Nale¿y pomóc ma³emu
+robotowi uciec z nieprzyjaznych planet zbieraj±c czê¶ci kapsu³y
+ratunkowej.
 
 %prep
 #%setup -q
