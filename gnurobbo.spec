@@ -12,7 +12,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-stdlib.patch
 URL:		http://gnurobbo.sourceforge.net/
 BuildRequires:	SDL_ttf-devel
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,22 +30,18 @@ ratunkowej.
 #%setup -q
 # blegh, tarball contains icons in /... don't mess in %_builddir
 %setup -q -c
-%patch0 -p 1
-
-# workaround for bad timestamps on files in source tarball
-#find . -type f | xargs touch
+%patch0 -p1
 
 %build
 cd %{name}-%{version}
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-cp config.h{,.in}
+#cp config.h{,.in}
+%{__autoheader}
 %{__automake}
 %configure \
-	CPPFLAGS="-I/usr/X11R6/include" \
-	LDFLAGS="%{rpmldflags} -L/usr/X11R6/lib"
+	LDFLAGS="%{rpmldflags}"
 
 %{__make}
 
@@ -53,8 +49,7 @@ cp config.h{,.in}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-cd %{name}-%{version}
-%{__make} install \
+%{__make} -C %{name}-%{version} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
