@@ -1,5 +1,5 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
-Summary(pl):	Klon s³ynnej gry Robbo znanej z 8-bitowych Atari
+Summary(pl.UTF-8):   Klon sÅ‚ynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
 Version:	0.57
 Release:	4
@@ -21,9 +21,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GNU Robbo is very addictive logic game. You must help little robot to
 get out of unfriendly planet, collecting parts of emergency capsule.
 
-%description -l pl
-GNU Robbo jest bardzo uzale¿niaj±c± gr± logiczn±. Nale¿y pomóc ma³emu
-robotowi uciec z nieprzyjaznych planet zbieraj±c czê¶ci kapsu³y
+%description -l pl.UTF-8
+GNU Robbo jest bardzo uzaleÅ¼niajÄ…cÄ… grÄ… logicznÄ…. NaleÅ¼y pomÃ³c maÅ‚emu
+robotowi uciec z nieprzyjaznych planet zbierajÄ…c czÄ™Å›ci kapsuÅ‚y
 ratunkowej.
 
 %prep
