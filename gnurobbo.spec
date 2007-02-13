@@ -1,5 +1,5 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
-Summary(pl.UTF-8):   Klon słynnej gry Robbo znanej z 8-bitowych Atari
+Summary(pl.UTF-8):	Klon słynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
 Version:	0.57
 Release:	4
