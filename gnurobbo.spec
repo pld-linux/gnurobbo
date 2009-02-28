@@ -1,15 +1,14 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl.UTF-8):	Klon słynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
-Version:	0.57
-Release:	4
+Version:	0.60
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}.tar.bz2
-# Source0-md5:	575547d729528a13a0a56281311cc52e
+Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-rc1.tar.gz
+# Source0-md5:	025f3832dd9776bec07d19aae93b2ac0
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-stdlib.patch
 URL:		http://gnurobbo.sourceforge.net/
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf >= 2.50
@@ -27,30 +26,25 @@ robotowi uciec z nieprzyjaznych planet zbierając części kapsuły
 ratunkowej.
 
 %prep
-#%setup -q
-# blegh, tarball contains icons in /... don't mess in %_builddir
-%setup -q -c
-%patch0 -p1
+%setup -q -n %{name}-rc1
+rm *.o
 
 %build
-cd %{name}-%{version}
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-#cp config.h{,.in}
-%{__autoheader}
-%{__automake}
-%configure \
-	LDFLAGS="%{rpmldflags}"
-
-%{__make}
+%{__make} \
+	CC="%{__cc}" \
+	PACKAGE_DATA_DIR=%{_datadir}/%{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-%{__make} -C %{name}-%{version} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	PACKAGE_DATA_DIR=$RPM_BUILD_ROOT%{_datadir}/%{name} \
+	BINDIR=$RPM_BUILD_ROOT%{_bindir} \
+	DOCDIR=data
+
+cp -r data/skins/tronic $RPM_BUILD_ROOT%{_datadir}/%{name}/skins/
+cp -r data/locales $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -60,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{name}-%{version}/{AUTHORS,Bugs,ChangeLog,README,TODO}
+%doc AUTHORS Bugs ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
