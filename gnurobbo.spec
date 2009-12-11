@@ -1,14 +1,13 @@
 Summary:	A clone of the famous 8bit Atari game Robbo
 Summary(pl.UTF-8):	Klon słynnej gry Robbo znanej z 8-bitowych Atari
 Name:		gnurobbo
-Version:	0.60
+Version:	0.64
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-rc1.tar.gz
-# Source0-md5:	025f3832dd9776bec07d19aae93b2ac0
+Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}-source.tar.gz
+# Source0-md5:	0adb4741716d4e96b74db90494632240
 Source1:	%{name}.desktop
-Source2:	%{name}.png
 URL:		http://gnurobbo.sourceforge.net/
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf >= 2.50
@@ -26,8 +25,7 @@ robotowi uciec z nieprzyjaznych planet zbierając części kapsuły
 ratunkowej.
 
 %prep
-%setup -q -n %{name}-rc1
-rm *.o
+%setup -q
 
 %build
 %{__make} \
@@ -47,7 +45,7 @@ cp -r data/skins/tronic $RPM_BUILD_ROOT%{_datadir}/%{name}/skins/
 cp -r data/locales $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+install icon32.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
