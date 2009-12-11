@@ -9,6 +9,8 @@ Source0:	http://dl.sourceforge.net/gnurobbo/%{name}-%{version}-source.tar.gz
 # Source0-md5:	0adb4741716d4e96b74db90494632240
 Source1:	%{name}.desktop
 URL:		http://gnurobbo.sourceforge.net/
+BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
