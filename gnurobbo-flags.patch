@@ -1,0 +1,11 @@
+--- gnurobbo-0.65.6/Makefile~	2010-01-16 23:33:19.000000000 +0100
++++ gnurobbo-0.65.6/Makefile	2010-02-17 15:46:17.039835612 +0100
+@@ -29,7 +29,7 @@
+ 
+ # These should be ok for most
+ SDL_CONFIG=sdl-config
+-CFLAGS=-O3 -pipe -Wall -fomit-frame-pointer `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" -DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)/\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER) 
++CFLAGS=$(OPTFLAGS) -pipe -fomit-frame-pointer `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" -DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)/\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER) 
+ LINK=$(CC)
+ LDFLAGS=
+ LIBS=`$(SDL_CONFIG) --libs` -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF)
