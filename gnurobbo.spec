@@ -8,6 +8,7 @@ Group:		X11/Applications/Games
 Source0:	http://downloads.sourceforge.net/gnurobbo/%{name}-%{version}-source.tar.gz
 # Source0-md5:	bb7d2bc1282429ac5c0b89966b07e0cc
 Source1:	%{name}.desktop
+Patch0:		%{name}-flags.patch
 URL:		http://gnurobbo.sourceforge.net/
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
@@ -28,10 +29,13 @@ ratunkowej.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} \
 	CC="%{__cc}" \
+	OPTFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}" \
 	PACKAGE_DATA_DIR=%{_datadir}/%{name}
 
 %install
