@@ -1,21 +1,11 @@
---- gnurobbo-0.66/Makefile~	2010-08-23 22:41:09.000000000 +0200
-+++ gnurobbo-0.66/Makefile	2010-11-15 09:37:56.453247079 +0100
-@@ -36,8 +36,7 @@
+--- gnurobbo-0.68/gnurobbo/Makefile.orig	2023-09-22 21:11:40.226215359 +0200
++++ gnurobbo-0.68/gnurobbo/Makefile	2023-09-22 21:18:47.603900056 +0200
+@@ -61,7 +61,7 @@ SDL_CONFIG?=sdl-config
  
- # These should be ok for most
- SDL_CONFIG?=sdl-config
--CFLAGS?=-O3 -pipe
--CFLAGS+=-Wall `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \
-+CFLAGS+=$(OPTFLAGS) `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \
+ 
+ 
+-CFLAGS+=-d -Wall  `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
++CFLAGS+=$(OPTFLAGS) -Wall  `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
  	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
  LDFLAGS=
  # Use these instead for debugging and/or profiling (mainly intended for GNU Robbo developers)
-@@ -46,7 +45,7 @@
- #	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
- #LDFLAGS=-pg
- LINK=$(CC)
--LIBS=`$(SDL_CONFIG) --libs` -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF)
-+LIBS=`$(SDL_CONFIG) --libs` -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF) -lm
- 
- # You won't need to alter anything below
- all: $(SOURCES) $(TARGET)
